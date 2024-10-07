@@ -101,6 +101,7 @@ def input_data_and_save_pdf(template_path, output_path, data):
 template_path = "input_files/File Format for Control Union.pptx"
 output_path = "output_files/CU_report_from_pptx.pptx"
 data = {
+    "": "",
     "deforestation_text": "Deforestation risk is low",
     "encroachment_text1": "Encroachment risk is low",
     "deforestation_text2": "Deforestation risk is low",
