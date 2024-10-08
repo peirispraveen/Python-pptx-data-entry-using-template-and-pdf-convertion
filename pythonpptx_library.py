@@ -103,7 +103,7 @@ output_path = "output_files/CU_report_from_pptx.pptx"
 #     "tec_val": "20M"
 # }
 
-data = json.load(open("input_data.json"))
+data = json.load(open("input_files/input_data.json"))
 
 # Image placeholder data: URL to download the image
 # image_data = {
@@ -113,7 +113,7 @@ data = json.load(open("input_data.json"))
 #     "image_4": "imgs/Picture4.png"
 # }
 
-image_data = json.load(open("input_img.json"))
+image_data = json.load(open("input_files/input_img.json"))
 
 # Call the function
 input_data_and_save_pdf(template_path, output_path, data, image_data)
@@ -123,6 +123,3 @@ input_dir = output_path
 output_dir = r"output_files"
 
 convert(input_dir, output_dir)
-
-
-

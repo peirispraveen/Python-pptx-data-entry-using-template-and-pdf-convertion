@@ -1,0 +1,19 @@
+{
+  "year1": "2020",
+  "year2": "2021",
+  "year3": "2022",
+  "year4": "2023",
+  "def_description": "Deforestation risk is low (farm unit does not overlap forested areas with tree cover loss)",
+  "encroachment_text1": "Encroachment risk is low (Land is not encroaching with a protected area)",
+  "deforestation_text2": "Deforestation risk is low (farm unit does not overlap forested areas with tree cover loss)",
+  "encroachment_text2": "Encroachment risk is low (Land is not encroaching with a protected area)",
+  "deforestation_text3": "Deforestation risk is low (farm unit does not overlap forested areas with tree cover loss)",
+  "encroachment_text3": "Encroachment risk is low (Land is not encroaching with a protected area)",
+  "deforestation_text4": "Deforestation risk is low (farm unit does not overlap forested areas with tree cover loss)",
+  "encroachment_text4": "Encroachment risk is low (Land is not encroaching with a protected area)",
+  "total_area_val": "0.12 ha",
+  "potec_val": "0.00 ha",
+  "def_val": "0.00ha",
+  "eligible_area_val": "0.12ha",
+  "tec_val": "20M"
+}
