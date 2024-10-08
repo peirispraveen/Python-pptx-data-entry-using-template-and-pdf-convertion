@@ -195,28 +195,50 @@ output_path = "output_files/CU_report_from_pptx.pptx"
 data = json.load(open("input_files/input_data.json"))
 
 # Image placeholder data
-# image_data = json.load(open("input_files/input_img.json"))
+image_data = json.load(open("input_files/input_img.json"))
 
-hti = Html2Image()
+# hti = Html2Image()
+#
+# test2 = hti.screenshot(
+#     html_file='input_files/AmazonSPE_20240109_res10_strata_map_with_dem_ndvi_grid40m 1.html', save_as='page2.png'
+# )
 
-test2 = hti.screenshot(
-    html_file='input_files/AmazonSPE_20240109_res10_strata_map_with_dem_ndvi_grid40m 1.html', save_as='page2.png'
-)
+# image_data = {
+#     "image_1": test2,
+#
+# }
 
-image_data = {
-    "image_1": test2,
 
-}
 
 #_______________________________________________________________________________#
 
-for placeholder, image_path in image_data.items():
-    # Checking if the image_path ends with ".html"
-    if image_path.endswith('.html'):
-        print(f"Placeholder '{placeholder}' contains an HTML file: {image_path}")
+# for placeholder, image_path in image_data.items():
+#     # Checking if the image_path ends with ".html"
+#     if image_path.endswith('.html'):
+#         print(f"Placeholder '{placeholder}' contains an HTML file: {image_path}")
+#
+#     else:
+#         print(f"Placeholder '{placeholder}' does not contain an HTML file.")
 
-    else:
-        print(f"Placeholder '{placeholder}' does not contain an HTML file.")
+
+# image_data = {
+#     "image_1": "input_files/AmazonSPE_20240109_res10_strata_map_with_dem_ndvi_grid40m 1.html",
+#     "image_2": "https://www.livingsymphonies.com/news/wp-content/uploads/2013/12/forest-satellite.jpg",
+#     "image_3": "imgs/Picture3.png",
+#     "image_4": "imgs/Picture4.png"
+# }
+
+html_placeholders = {}
+
+# Iterate through the image_data dictionary
+for placeholder, image_path in image_data.items():
+    # Check if the image_path ends with ".html"
+    if image_path.endswith('.html'):
+        # Add to the html_placeholders dictionary in the order found
+        html_placeholders[placeholder] = image_path
+
+# Output the collected placeholders with HTML files
+print("HTML file placeholders found:", html_placeholders)
 
 
 input_data_and_save_pdf(template_path, output_path, data, image_data)
