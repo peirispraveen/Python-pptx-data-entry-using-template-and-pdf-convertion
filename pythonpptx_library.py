@@ -197,49 +197,48 @@ data = json.load(open("input_files/input_data.json"))
 # Image placeholder data
 image_data = json.load(open("input_files/input_img.json"))
 
-# hti = Html2Image()
-#
-# test2 = hti.screenshot(
-#     html_file='input_files/AmazonSPE_20240109_res10_strata_map_with_dem_ndvi_grid40m 1.html', save_as='page2.png'
-# )
+# Directory to save the screenshots
+output_dir = 'output_files'
 
-# image_data = {
-#     "image_1": test2,
-#
-# }
+# Create the output directory if it doesn't exist
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
 
+html_placeholders = {}
 
+hti = Html2Image()
 
-#_______________________________________________________________________________#
+# Directory to save the screenshots
+output_dir = 'output_images'
 
-# for placeholder, image_path in image_data.items():
-#     # Checking if the image_path ends with ".html"
-#     if image_path.endswith('.html'):
-#         print(f"Placeholder '{placeholder}' contains an HTML file: {image_path}")
-#
-#     else:
-#         print(f"Placeholder '{placeholder}' does not contain an HTML file.")
+# Create the output directory if it doesn't exist
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
 
+# Set the output directory for Html2Image
+hti.output_path = output_dir
 
-# image_data = {
-#     "image_1": "input_files/AmazonSPE_20240109_res10_strata_map_with_dem_ndvi_grid40m 1.html",
-#     "image_2": "https://www.livingsymphonies.com/news/wp-content/uploads/2013/12/forest-satellite.jpg",
-#     "image_3": "imgs/Picture3.png",
-#     "image_4": "imgs/Picture4.png"
-# }
-
+# Dictionary to store HTML file placeholders
 html_placeholders = {}
 
 # Iterate through the image_data dictionary
 for placeholder, image_path in image_data.items():
     # Check if the image_path ends with ".html"
     if image_path.endswith('.html'):
-        # Add to the html_placeholders dictionary in the order found
-        html_placeholders[placeholder] = image_path
+        # Convert HTML file to an image and save it
+        output_image_filename = f'{placeholder}.png'
+        hti.screenshot(html_file=image_path, save_as=output_image_filename)
 
-# Output the collected placeholders with HTML files
-print("HTML file placeholders found:", html_placeholders)
+        # Add the new image path (within output directory) to the html_placeholders dictionary
+        html_placeholders[placeholder] = os.path.normpath(os.path.join(output_dir, output_image_filename)).replace("\\",
+                                                                                                                   "/")
 
+# Replace the HTML paths in the original image_data with the generated image paths
+for placeholder, new_image_path in html_placeholders.items():
+    image_data[placeholder] = new_image_path
+
+# Output the updated image_data
+print("Updated image_data:", image_data)
 
 input_data_and_save_pdf(template_path, output_path, data, image_data)
 
